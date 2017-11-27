@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <h1>{{ msg }}</h1>
-    <NewQuote :quotes="quotes" v-on:updateView="updateParentView"></NewQuote>
+    <NewQuote :quotes="quotes"  :myModel="myModel" v-on:updateView="updateParentView"></NewQuote>
     <QuoteGrid :quotes="quotes">
-        <h2 slot="title">hoge</h2>
-        <p slot="content">hoge</p>    
+        <h2 slot="title">{{ myModel.name }}</h2>
+        <p slot="content">{{ myModel.age }}</p>
     </QuoteGrid>
     <component :is="currentView">
     </component>
@@ -23,7 +23,11 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       quotes: ["This is my Quote"],
-      currentView: TestView
+      currentView: TestView,
+      myModel: {
+          name: "hoge",
+          age: 10
+      }
     }
   },
   components: {
