@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="row">
-        <textarea cols="100" rows="4" v-model="myQuote">{{ myQuote }}</textarea>
+        <textarea cols="100" rows="4" v-model="myQuote"></textarea><br/>
+        <input type="text" v-model="myModel.name"/>
     </div>
     <div class="row">
         <button @click="addQuote">Add Quote</button>
@@ -11,7 +12,7 @@
 
 <script>
 export default {
-    props: ['quotes'],
+    props: ['quotes', 'myModel'],
     data: function() {
         return {
             myQuote: ""
@@ -23,7 +24,7 @@ export default {
                 this.quotes.push(this.myQuote);
                 this.myQuote = "";
             } else {
-                this.$emit('updateView', "from NewQuote"); 
+                this.$emit('updateView', "from NewQuote");
             }
         }
     }
